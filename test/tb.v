@@ -27,9 +27,10 @@ module tb ();
   wire VGND = 1'b0;
 `endif
 
-  // Replace tt_um_example with your module name:
-  tt_um_example user_project (
+  wire uart_tx = uo_out[4];
 
+  // Replace tt_um_example with your module name:
+  tt_um_autosel user_project (
       // Include power ports for the Gate Level test:
 `ifdef GL_TEST
       .VPWR(VPWR),
