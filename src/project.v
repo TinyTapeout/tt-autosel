@@ -18,7 +18,7 @@ module tt_um_autosel (
 
   // All output pins must be assigned. If not used, assign to 0.
   assign uo_out[3] = 0;
-  assign uo_out[7:5] = 0;
+  assign uo_out[6:5] = 0;
   assign uio_out[7:2] = 0;
   assign uio_oe[7:2] = 0;
 
@@ -44,6 +44,12 @@ module tt_um_autosel (
       .rst_n(rst_n),
       .eeprom_data(eeprom_data),
       .uart_tx(uo_out[4])
+  );
+
+  ring_osc rosc (
+      .ena(ui_in[7]),
+      .clk_out(),
+      .clk_out_div(uo_out[7])
   );
 
   // List all unused inputs to prevent warnings
